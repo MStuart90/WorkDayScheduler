@@ -27,3 +27,20 @@ function colorSchedule(){
     });
 };
 
+function renderStoredInputs(){
+    $(".event").each(function(){
+        var inputId = $(this).attr("id");
+        $(this).val(localStorage.getItem(inputId));
+    });
+};
+
+$(".saveBtn").click(function(){
+    var scheduleInputs = $(this).siblings(".event").val();
+    var inputsLocation = $(this).siblings(".event").attr("id");
+    localStorage.setItem(inputsLocation,scheduleInputs);
+});
+
+setInterval(getDate,1000);
+colorSchedule();
+setInterval(colorSchedule,1000);
+renderStoredInputs();

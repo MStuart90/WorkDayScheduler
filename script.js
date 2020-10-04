@@ -28,6 +28,7 @@ function colorSchedule(){
 };
 
 function renderStoredInputs(){
+    event.preventDefault();
     $(".event").each(function(){
         var inputId = $(this).attr("id");
         $(this).val(localStorage.getItem(inputId));
@@ -35,6 +36,7 @@ function renderStoredInputs(){
 };
 
 $(".saveBtn").click(function(){
+    event.preventDefault();
     var scheduleInputs = $(this).siblings(".event").val();
     var inputsLocation = $(this).siblings(".event").attr("id");
     localStorage.setItem(inputsLocation,scheduleInputs);
